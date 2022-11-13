@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login</title>
+</head>
+
+<body>
+    <h1>Login Here</h1>
+    <form action="{{url_for('admin')}}" method="POST">
+        <label>Username</label>
+        <input name="username" type="text">
+        <label>Password</label>
+        <input name="password" type="password">
+        <br>
+        <input type="submit">
+    </form>
+</body>
+
+</html>
