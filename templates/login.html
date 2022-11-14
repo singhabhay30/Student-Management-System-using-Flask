@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html>
 
+{% with messages=get_flashed_messages() %}
+{% if messages %}
+<script type="text/javascript">
+    var m = {{ messages| safe }};
+    for (var i = 0; i < m.length; i++) {
+        alert(m[i]);
+    }
+</script>
+{% endif %}
+{% endwith %}
+
 <head>
     <title>Login</title>
 </head>

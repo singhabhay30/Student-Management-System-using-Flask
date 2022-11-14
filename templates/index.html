@@ -2,45 +2,63 @@
 <html>
 
 <head>
-    <title>Admin Panel</title>
-    <style>
-        ul {
-          list-style-type: none;
-          margin: 0;
-          padding: 0;
-          overflow: hidden;
-          background-color: #333;
-        }
-        
-        li {
-          float: left;
-        }
-        
-        li a {
-          display: block;
-          color: white;
-          text-align: center;
-          padding: 14px 16px;
-          text-decoration: none;
-        }
-        
-        li a:hover {
-          background-color: #111;
-        }
-        </style>
+  <title>Admin Panel</title>
+  <style>
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333;
+    }
+
+    li {
+      float: left;
+    }
+
+    li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    li a:hover {
+      background-color: #111;
+    }
+
+    table,
+    th,
+    td {
+      border: 1px solid black;
+    }
+  </style>
 </head>
 
 <body>
-    <nav class="navbar">
+  <nav class="navbar">
     <ul>
-        <li><a class="active" href="#home">Home</a></li>
-        <li><a href="{{url_for('add')}}">Add a Student</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#about">About</a></li>
-      </ul>
-    </nav>
-    {%block contents%}
-    {%endblock%}
+      <li><a class="active" href="{{url_for('home')}}">Home</a></li>
+      <li><a href="{{url_for('add')}}">Add a Student</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="{{url_for('logout')}}">Logout</a></li>
+    </ul>
+  </nav>
+  {%block contents%}
+  {%endblock%}
 </body>
 
 </html>
+
+{% with messages=get_flashed_messages() %}
+{% if messages %}
+<script type="text/javascript">
+  var m = {{ messages| safe }};
+  for (var i = 0; i < m.length; i++) {
+    alert(m[i]);
+  }
+</script>
+{% endif %}
+{% endwith %}
